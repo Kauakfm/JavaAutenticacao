@@ -1,6 +1,6 @@
-package com.br.var.solutions.security;
+package com.br.var.solutions.infraestructure.config.security;
 
-import com.br.var.solutions.ValidaUsuario;
+import com.br.var.solutions.domain.entities.ValidaUsuario;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

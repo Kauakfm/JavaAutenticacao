@@ -1,9 +1,7 @@
-package com.br.var.solutions.security;
+package com.br.var.solutions.infraestructure.config.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 protected void configure(HttpSecurity httpSecurity) throws Exception
 {
     httpSecurity.csrf().disable()
-            .authorizeRequests().antMatchers("/pessoa/authorization", "/pessoa/authenticate", "/configuration/**", "/webjars/**").permitAll()
+            .authorizeRequests().antMatchers("/pessoa/authorization","/auth","/pessoa/authenticate", "/configuration/**", "/webjars/**").permitAll()
             .anyRequest().authenticated().and().exceptionHandling().authenticationEntryPoint(JwtAuthenticationEntryPoint).and().sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             httpSecurity.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);

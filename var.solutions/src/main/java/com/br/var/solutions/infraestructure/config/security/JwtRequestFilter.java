@@ -1,4 +1,4 @@
-package com.br.var.solutions.security;
+package com.br.var.solutions.infraestructure.config.security;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;

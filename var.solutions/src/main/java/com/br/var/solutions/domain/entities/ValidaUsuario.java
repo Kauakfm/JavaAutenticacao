@@ -1,4 +1,4 @@
-package com.br.var.solutions;
+package com.br.var.solutions.domain.entities;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 

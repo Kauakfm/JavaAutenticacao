@@ -1,4 +1,4 @@
-package com.br.var.solutions;
+package com.br.var.solutions.adapaters.input.Entities;
 
 import java.util.Date;
 public class GenerateToken {

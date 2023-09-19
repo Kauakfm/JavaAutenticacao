@@ -1,4 +1,4 @@
-package com.br.var.solutions;
+package com.br.var.solutions.adapaters.input.Entities;
 
 public class PessoaResponse {
 
@@ -6,8 +6,6 @@ public class PessoaResponse {
     public int idade;
     public String imc;
     public String classificacaoIMC;
-    public String IR;
-    public String aliquota;
     public String saldoEmDolar;
     public String sobrenome;
     public String endereco;
@@ -20,20 +18,44 @@ public class PessoaResponse {
     public String mundialClubes;
 
 
-    public String getMundialClubes() {
-        return mundialClubes;
-    }
-
-    public void setMundialClubes(String mundialClubes) {
-        this.mundialClubes = mundialClubes;
-    }
-
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getImc() {
+        return imc;
+    }
+
+    public void setImc(String imc) {
+        this.imc = imc;
+    }
+
+    public String getClassificacaoIMC() {
+        return classificacaoIMC;
+    }
+
+    public void setClassificacaoIMC(String classificacaoIMC) {
+        this.classificacaoIMC = classificacaoIMC;
+    }
+
+    public String getSaldoEmDolar() {
+        return saldoEmDolar;
+    }
+
+    public void setSaldoEmDolar(String saldoEmDolar) {
+        this.saldoEmDolar = saldoEmDolar;
     }
 
     public String getSobrenome() {
@@ -52,12 +74,12 @@ public class PessoaResponse {
         this.endereco = endereco;
     }
 
-    public int getIdade() {
-        return idade;
+    public int getAnoNascimento() {
+        return anoNascimento;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setAnoNascimento(int anoNascimento) {
+        this.anoNascimento = anoNascimento;
     }
 
     public double getPeso() {
@@ -100,51 +122,11 @@ public class PessoaResponse {
         Saldo = saldo;
     }
 
-    public String getImc() {
-        return imc;
+    public String getMundialClubes() {
+        return mundialClubes;
     }
 
-    public void setImc(String imc) {
-        this.imc = imc;
-    }
-
-    public String getClassificacaoIMC() {
-        return classificacaoIMC;
-    }
-
-    public void setClassificacaoIMC(String classificacaoIMC) {
-        this.classificacaoIMC = classificacaoIMC;
-    }
-
-    public String getIR() {
-        return IR;
-    }
-
-    public void setIR(String IR) {
-        this.IR = IR;
-    }
-
-    public String getAliquota() {
-        return aliquota;
-    }
-
-    public void setAliquota(String aliquota) {
-        this.aliquota = aliquota;
-    }
-
-    public String getSaldoEmDolar() {
-        return saldoEmDolar;
-    }
-
-    public void setSaldoEmDolar(String saldoEmDolar) {
-        this.saldoEmDolar = saldoEmDolar;
-    }
-
-    public int getAnoNascimento() {
-        return anoNascimento;
-    }
-
-    public void setAnoNascimento(int anoNascimento) {
-        this.anoNascimento = anoNascimento;
+    public void setMundialClubes(String mundialClubes) {
+        this.mundialClubes = mundialClubes;
     }
 }
