@@ -36,15 +36,17 @@ public class AuthenticateController {
         if(Objects.isNull(user))
         {
             log.info("Seu token não vai ser gerado simplesmente pq não quero e .");
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new GenerateToken());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(GenerateToken.builder().build());
         }
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
 
         String token = jwtTokenUtil.generateToken(client_id);
 
 
-        GenerateToken tokenResponse = new GenerateToken();
-        tokenResponse.setToken(token);
+        GenerateToken tokenResponse = GenerateToken.builder()
+                        .token(token)
+                                .usuarioId(user.getId())
+                                        .build();
 
         log.info("Seu token ta gerado pelo user :" + client_id + " em" + System.currentTimeMillis());
         return ResponseEntity.ok(tokenResponse);
