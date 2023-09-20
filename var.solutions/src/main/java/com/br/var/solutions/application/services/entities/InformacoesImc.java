@@ -1,4 +1,4 @@
-package com.br.var.solutions.domain.entities;
+package com.br.var.solutions.application.services.entities;
 
 import lombok.Builder;
 import lombok.Getter;
