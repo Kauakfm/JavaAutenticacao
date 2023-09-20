@@ -3,7 +3,7 @@ package com.br.var.solutions.adapaters.input.Controllers;
 import com.br.var.solutions.adapaters.input.Entities.PessoaRequest;
 import com.br.var.solutions.adapaters.input.Entities.PessoaResponse;
 import com.br.var.solutions.application.services.useCase.*;
-import com.br.var.solutions.domain.entities.InformacoesImc;
+import com.br.var.solutions.application.services.entities.InformacoesImc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

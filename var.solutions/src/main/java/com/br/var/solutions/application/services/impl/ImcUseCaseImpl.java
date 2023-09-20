@@ -1,6 +1,6 @@
 package com.br.var.solutions.application.services.impl;
 
-import com.br.var.solutions.domain.entities.InformacoesImc;
+import com.br.var.solutions.application.services.entities.InformacoesImc;
 import com.br.var.solutions.application.services.useCase.ImcUseCase;
 import org.springframework.stereotype.Service;
 

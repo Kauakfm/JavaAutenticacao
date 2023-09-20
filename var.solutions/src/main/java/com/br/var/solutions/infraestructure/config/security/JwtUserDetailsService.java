@@ -1,6 +1,8 @@
 package com.br.var.solutions.infraestructure.config.security;
 
-import com.br.var.solutions.domain.entities.ValidaUsuario;
+import com.br.var.solutions.domain.entities.UsuarioEntity;
+import com.br.var.solutions.domain.repositories.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,14 +14,16 @@ import java.util.ArrayList;
 @Service
 public class JwtUserDetailsService implements UserDetailsService
 {
+    @Autowired
+    UsuarioRepository usuarioRepository;
+
     @Override
     public UserDetails loadUserByUsername(String userName)
     {
-        String userValido = ValidaUsuario.returnUsername(userName);
+        UsuarioEntity userValido = usuarioRepository.findByUsuario(userName);
         if (userValido != null)
         {
-            String password = ValidaUsuario.returnPassword(userName);
-            return new User(userName, password, new ArrayList<>());
+            return new User(userName, userValido.getSenha(), new ArrayList<>());
         }
         else
         {

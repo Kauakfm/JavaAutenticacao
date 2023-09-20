@@ -1,6 +1,6 @@
 package com.br.var.solutions.application.services.useCase;
 
-import com.br.var.solutions.domain.entities.InformacoesImc;
+import com.br.var.solutions.application.services.entities.InformacoesImc;
 import com.br.var.solutions.adapaters.input.Entities.PessoaRequest;
 import com.br.var.solutions.adapaters.input.Entities.PessoaResponse;
 
