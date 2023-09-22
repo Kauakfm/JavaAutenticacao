@@ -11,6 +11,17 @@ public class PessoaRequest {
     public double altura;
     public double Saldo;
 
+    public int userId;
+
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public String getNome() {
         return nome;
     }

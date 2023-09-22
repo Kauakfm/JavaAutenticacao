@@ -7,4 +7,6 @@ public interface UsuarioUseCase {
 
     Usuario buscarUsuario(Usuario user);
 
+    Usuario atualizarUsuario(Usuario user, Long id);
+
 }

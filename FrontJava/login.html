@@ -62,7 +62,7 @@
     <input type="text" placeholder="Digite sua senha" id="txt_senha">
 
 <button onclick="login()">Entrar</button>
-<button onclick="cadastrar()">Cadastrar-se</button>
+    <button onclick="cadastrar()">Cadastrar-se</button>
 </body>
 </html>
 <script>
@@ -81,6 +81,7 @@ function login()
             var userId = response.usuarioId;
             window.localStorage.setItem('token', token)
             window.localStorage.setItem('usuario', userId)
+            window.location.href = './index.html'
         },
         error: function (request, message, error)
         {

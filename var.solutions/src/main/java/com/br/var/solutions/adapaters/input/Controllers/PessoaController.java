@@ -6,13 +6,16 @@ import com.br.var.solutions.application.services.useCase.*;
 import com.br.var.solutions.application.services.entities.InformacoesImc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
 @RequestMapping("/pessoa")
+@CrossOrigin(origins = "*")
 @Slf4j
 public class PessoaController {
 
@@ -20,38 +23,48 @@ public class PessoaController {
     private MundialUseCase mundialUseCase;
     @Autowired
     private ImcUseCase imcUseCase;
-
     @Autowired
     private AnoNascimentoUseCase anoNascimentoUseCase;
-
     @Autowired
     private ImpostoRendaUseCase impostoRendaUseCase;
-
     @Autowired
     private SaldoDolarUseCase saldoDolarUseCase;
-
     @Autowired
     private RespostaFrontEndUseCase respostaFrontEndUseCase;
 
-    @CrossOrigin(origins = "*")
-    @GetMapping
-    public ResponseEntity<Object> get() {
-        PessoaRequest pessoaRequest1 = new PessoaRequest();
-        pessoaRequest1.setNome("Kaua");
-        pessoaRequest1.setSobrenome("Ferreira");
-        pessoaRequest1.setEndereco("Rua antonio carlos");
-        pessoaRequest1.setIdade(17);
 
-        return ResponseEntity.ok(pessoaRequest1);
+    @GetMapping
+    public ResponseEntity<List<PessoaResponse>> get() throws SQLException {
+      List<PessoaResponse> listaDePessoas = respostaFrontEndUseCase.buscaListaPessoas();
+      if(Objects.isNull(listaDePessoas)){
+          return (ResponseEntity<List<PessoaResponse>>) ResponseEntity.notFound();
+      }
+        return ResponseEntity.ok(listaDePessoas);
     }
 
-    @GetMapping("/resumo")
-    public ResponseEntity<PessoaResponse> getpessoa(@RequestBody PessoaRequest pessoinha, @RequestParam(value = "valida_mundial") Boolean DesejavalidarMundial) {
+    @GetMapping("/{id}")
+    public ResponseEntity<PessoaResponse> getPessoa(@PathVariable int id) throws SQLException {
+       PessoaResponse detalhesPessoa = respostaFrontEndUseCase.buscaDetalhesPessoa(id);
+        if(Objects.isNull(detalhesPessoa)){
+            return (ResponseEntity<PessoaResponse>)ResponseEntity.notFound();
+        }
+        return ResponseEntity.ok(detalhesPessoa);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PessoaResponse> deletePessoa(@PathVariable int id) throws SQLException {
+        respostaFrontEndUseCase.excluirDadosPessoa(id);
+// esse string so ta ai para não retornar null no front e não da coco la "ERROR";
+        String sucesso = "Dados excluidos com sucesso";
+        return ResponseEntity.status(HttpStatus.OK).body(PessoaResponse.builder().build());
+    }
+
+    @PostMapping("/resumo")
+    public ResponseEntity<PessoaResponse> getpessoa(@RequestBody PessoaRequest pessoinha, @RequestParam(value = "valida_mundial") Boolean DesejavalidarMundial) throws SQLException {
         InformacoesImc imc = InformacoesImc.builder().build();
         int anoNascimento = 0;
-        String impostoRenda = null;
+        double impostoRenda = 0;
         String validaMundial = null;
-        String saldoDolar = null;
+        double saldoDolar = 0;
 
         if (!pessoinha.getNome().isEmpty()) {
             log.info("Iniciando o processo de resumo da pessoa", pessoinha);
@@ -79,7 +92,7 @@ public class PessoaController {
             }
 
             log.info("Montando o objeto de retorno para o front-end");
-            PessoaResponse resumo = respostaFrontEndUseCase.responderFrontEnd(pessoinha, imc, anoNascimento, impostoRenda, validaMundial, saldoDolar);
+            PessoaResponse resumo = respostaFrontEndUseCase.mapper(pessoinha, imc, anoNascimento, impostoRenda, validaMundial, saldoDolar);
 
             return ResponseEntity.ok(resumo);
         }

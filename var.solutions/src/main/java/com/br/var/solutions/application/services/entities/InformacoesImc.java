@@ -9,6 +9,6 @@ import lombok.Setter;
 @Builder
 public class InformacoesImc {
 
-    private String imc;
+    private double imc;
     private String classificacao;
 }
