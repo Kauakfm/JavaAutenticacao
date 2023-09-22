@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class SaldoDolarUseCaseImpl implements SaldoDolarUseCase {
 
-public String convertSaldoDolar(double saldo)
+public double convertSaldoDolar(double saldo)
 {
     return converterSaldoEmDolar(saldo);
 }
 
 
-    private String converterSaldoEmDolar(double saldo) {
-        return String.valueOf(saldo / 5.11);
+    private double converterSaldoEmDolar(double saldo) {
+        return saldo / 5.11;
     }
 }

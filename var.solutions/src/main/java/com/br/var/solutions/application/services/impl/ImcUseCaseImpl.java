@@ -17,32 +17,32 @@ public InformacoesImc calculoImc(double peso, double altura){
 
         if (imc <= 18.5) {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("abaixo do peso")
                     .build();
         } else if (imc > 18.5 && imc <= 24.9) {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("peso ideal")
                     .build();
         } else if (imc > 24.9 && imc <= 29.9) {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("exesso de peso")
                     .build();
         } else if (imc > 29.9 && imc <= 34.9) {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("obesidade classe I")
                     .build();
         } else if (imc > 34.9 && imc < 39.9) {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("obesidade classe II")
                     .build();
         } else {
             return InformacoesImc.builder()
-                    .imc(String.valueOf(imc))
+                    .imc(imc)
                     .classificacao("obesidade classe III")
                     .build();
         }
